@@ -10,9 +10,13 @@ export class PostsService {
 
   constructor( private _http: HttpClient) { }
   // url: string = 'https://jsonplaceholder.typicode.com/posts';
+  url: string = 'http://localhost:8383/api/posts';
 
-  url: string = 'http://localhost:8080/api/posts';
   getAllPosts(): Observable< IPost[]> {
     return this._http.get< IPost[]>(this.url);
+  }
+
+  getPostId(id: number): Observable< IPost> {
+    return this._http.get< IPost>(this.url + '/' + id);
   }
 }
